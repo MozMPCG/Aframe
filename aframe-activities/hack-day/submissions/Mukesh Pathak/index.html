@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WebVR Box Wall | Hack-Day MozMPCG</title>
+<meta name="author" content="Hack-Day Mukesh Pathak MozMPCG">
+<meta name="description" content="WebVR virtual reality small game develop by Hack-Day MozMPCG">
+<script src="https://aframe.io/releases/0.2.0/aframe.js"></script>
+<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+<script src="js/hackday.js"></script>
+</head>
+<body>
+<a-scene>
+<a-assets>
+ <a-mixin dynamic-body id="ball" geometry="primitive: sphere; radius: 0.5;" material="color: #8aa2a4"></a-mixin>
+</a-assets>
+<a-entity camera kinematic-body universal-controls position="0 -218 0">
+ <a-entity cursor="fuse: true; maxDistance: 1.5" geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.01" material="color: #004a7e" position="0 0 -0.69" 
+           mike="mixin: ball; on: mousedown; position: 1 6 1" mike="mixin: ball; on: touchstart; position: 1 6 1"></a-entity>   
+<a-animation attribute="position" begin="start-link1" easing="linear" to="0 0 -150" dur="0"></a-animation>
+</a-entity>	
+<a-entity geometry="primitive: plane; height: 2; width: 2" position="0 -221.72 0" rotation="90 0 0" material="shader: flat; transparent: true; side: double; opacity: 1;
+color: #0596a3;"></a-entity>
+<a-entity geometry="primitive: plane; height: 1000; width: 1000" position="0 -222 0" rotation="-90 0 0" material="shader: flat; transparent: true; opacity: 0.7;
+color: #73dbfd; repeat: 300 300">
+ <a-animation attribute="position" begin="0" dur="2500" easing="ease" direction="alternate" repeat="indefinite" to="0 -222.1 0"></a-animation>
+</a-entity>
+ 
+<a-entity static-body geometry="primitive: box; depth: 5; height: 3; width: 20" position="0 -220 -12" material="shader: flat; side: double; 
+color: #222223; repeat: 10 2;"><a-image src="images/rules.png" position="0.0 1.7 -2.9" width="1.5" height="0.5"></a-image></a-entity> 
+<a-entity dynamic-body geometry="primitive: box; depth: 3.5; height: 3.5; width: 3.5;" position="6 -218 -13" material="shader: flat;
+color: #49b2f4;"></a-entity>
+<a-entity dynamic-body geometry="primitive: box; depth: 3.5; height: 3.5; width: 3.5;" position="0 -218 -13" material="shader: flat;
+color: #9d9c9e;"></a-entity>
+<a-entity dynamic-body geometry="primitive: box; depth: 3.5; height: 3.5; width: 3.5;" position="-6 -218 -13" material="shader: flat;
+color: #b84efb;"></a-entity>
+<a-entity dynamic-body geometry="primitive: box; depth: 2; height: 2; width: 2;" position="6 -210 -13" material="shader: flat;
+color: red;"></a-entity> 
+<a-entity dynamic-body geometry="primitive: box; depth: 2; height: 2; width: 2;" position="0 -210 -13" material="shader: flat;
+color: #52ffb4;"></a-entity> 
+<a-entity dynamic-body geometry="primitive: box; depth: 2; height: 2; width: 2;" position="-6 -210 -13" material="shader: flat;
+color: #0600ff; repeat: 10 2;"></a-entity> 
+
+<a-entity static-body geometry="primitive: box; depth: 5; height: 3; width: 20;" position="-0 -206 -13" material="shader: flat;
+color: gray;"></a-entity> 
+
+
+<a-entity static-body geometry="primitive: box; depth: 5; height: 3; width: 20;" position="-0 -213 -13" rotation="180 0 0" material="shader: flat;
+color: #fd9ddd;"></a-entity>
+<a-entity static-body geometry="primitive: box; depth: 10; height: 0.5; width: 10;" position="0 -222 0" rotation="0 90 0" material="shader: flat;
+color: #0596a3; repeat: 3 3;"> 
+      <a-cylinder position="-1 1 -3" rotation="0 0 0" radius="0.1" height="2" color="magenta"></a-cylinder>	
+	   <a-cylinder position="1 1 -3" rotation="0 0 0" radius="0.1" height="2" color="magenta"></a-cylinder>
+	    <a-box position="0 1.7 -3" rotation="0 0 0" depth="0.1" height="0.7" width="2" color="white"></a-box>
+		<a-image src="images/micky.PNG" position="0.0 1.7 -2.9" width="1.5" height="0.5"></a-image>
+		</a-entity>
+ <a-sky color="#cafbff" radius="5000"></a-sky>
+</a-scene>
+<script language="javascript">   
+document.querySelector('#link1').addEventListener('click', function () {
+document.querySelector('#ball').emit('start-link1');
+});
+</script>
+ </body>
+</html>
